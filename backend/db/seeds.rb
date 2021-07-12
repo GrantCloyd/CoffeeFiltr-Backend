@@ -1,6 +1,6 @@
-User.create(name: "Anthony", username: "Anchobies", bio: "I'm a student", avatar: "some url", password: "flatiron")
-User.create(name: "Grant", username: "Gcloyd", bio: "I'm a student as well", avatar: "some url", password: "flatironRocks")
-User.create(name: "Adam", username: "AdamJWo", bio: "I'm an ex-student", avatar: "some url", password: "flatironSucks")
+User.create(first_name: "Anthony", last_name: "Chung", email: "anthonychung97@gmail.com", username: "Anchobies", bio: "I'm a student", avatar: "some url", password: "flatiron")
+User.create(first_name: "Grant", last_name: "Cloyd", email: "grantcloyd@gmail.com", username: "Gcloyd", bio: "I'm a student as well", avatar: "some url", password: "flatironRocks")
+User.create(first_name: "Adam", last_name: "Johnson", email: "adamjwo@gmail.com", username: "AdamJWo", bio: "I'm an ex-student", avatar: "some url", password: "flatironSucks")
 
 Beverage.create(title: "Coffee", description: "A cup of coffee", img_url: "coffee.jpg")
 Beverage.create(title: "Iced coffee", description: "A cup of coffee that's cold", img_url: "coffee.jpg")
