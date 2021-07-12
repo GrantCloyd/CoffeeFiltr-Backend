@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_07_12_161008) do
   create_table "beverages", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "img_url"
+    t.text "img_url"
     t.boolean "hot", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2021_07_12_161008) do
     t.string "email"
     t.string "username"
     t.text "bio"
-    t.string "avatar"
+    t.text "avatar"
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

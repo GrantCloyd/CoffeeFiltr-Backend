@@ -3,7 +3,7 @@ class CreateBeverageTable < ActiveRecord::Migration[5.2]
     create_table :beverages do |t|
       t.string :title
       t.text :description
-      t.string :img_url
+      t.text :img_url
       t.boolean :hot, default: true
       t.timestamps
     end

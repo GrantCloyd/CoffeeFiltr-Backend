@@ -8,7 +8,7 @@ class CreateUserTable < ActiveRecord::Migration[5.2]
     t.string :email
     t.string :username
     t.text :bio 
-    t.string :avatar
+    t.text :avatar
     t.string :password
     t.timestamps  
     end
