@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_07_12_161008) do
     t.string "title"
     t.text "description"
     t.string "img_url"
+    t.boolean "hot", default: true
   end
 
   create_table "components", force: :cascade do |t|
