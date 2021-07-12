@@ -5,6 +5,7 @@ class CreateBeverageTable < ActiveRecord::Migration[5.2]
       t.text :description
       t.string :img_url
       t.boolean :hot, default: true
+      t.timestamps
     end
   end
 end

@@ -6,6 +6,7 @@ class CreateReviewTable < ActiveRecord::Migration[5.2]
       t.float :rating
       t.integer :beverage_id
       t.integer :user_id
+      t.timestamps
     end
   end
 end

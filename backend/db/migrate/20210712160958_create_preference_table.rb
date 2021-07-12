@@ -3,6 +3,7 @@ class CreatePreferenceTable < ActiveRecord::Migration[5.2]
     create_table :preferences do |t|
       t.integer :user_id
       t.integer :ingredient_id
+      t.timestamps
      end
   end
 end

@@ -17,30 +17,42 @@ ActiveRecord::Schema.define(version: 2021_07_12_161008) do
     t.text "description"
     t.string "img_url"
     t.boolean "hot", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "components", force: :cascade do |t|
     t.integer "beverage_id"
     t.integer "ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "beverage_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "preferences", force: :cascade do |t|
     t.integer "user_id"
     t.integer "ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -49,6 +61,8 @@ ActiveRecord::Schema.define(version: 2021_07_12_161008) do
     t.float "rating"
     t.integer "beverage_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,6 +73,8 @@ ActiveRecord::Schema.define(version: 2021_07_12_161008) do
     t.text "bio"
     t.string "avatar"
     t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
