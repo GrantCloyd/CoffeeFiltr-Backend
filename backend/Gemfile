@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'rack-contrib', '~> 2.3', :require => 'rack/contrib'
+gem 'sinatra-cross_origin'
+
+
 gem 'pry'
 gem 'rack'
 gem 'rack-test'
@@ -10,3 +14,7 @@ gem "require_all"
 gem "activerecord", "~> 5.2"
 gem "sinatra-activerecord"
 gem "sqlite3"
+
+gem 'thin'
+gem 'bcrypt'
+gem 'tux'
