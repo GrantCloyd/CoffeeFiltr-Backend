@@ -1,3 +1,5 @@
+require 'pry'
+
 class ApplicationController < Sinatra::Base
     register Sinatra::CrossOrigin
   
@@ -23,6 +25,11 @@ class ApplicationController < Sinatra::Base
       users = User.all
       users.to_json
     end
+
+    get "/thumbnail_data" do
+        beverages = Beverage.select(:title, :beverage_id, :img_url)
+        beverages.to_json
+      end
 
     get "/reviews" do 
       reviews = Review.all
