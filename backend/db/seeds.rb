@@ -12,7 +12,7 @@ Beverage.create(title: "Americano", description: "With a similar flavor to black
     img_url: "http://suburbcafe.com.np/wp-content/uploads/2017/03/americano-coffee.jpg" )
 Beverage.create(title: "Espresso", description: "An espresso shot can be served solo or used as the foundation of most coffee drinks, like lattes and macchiatos. A double shot of espresso can be called a doppio.",
 
-    img_url: "http://weknowyourdreams.com/images/espresso/espresso-02.jpg" )
+    img_url: "https://i2-prod.mirror.co.uk/incoming/article17203196.ece/ALTERNATES/s810/3_Tiny-glass-cup-of-espresso-coffee.jpg" )
 Beverage.create(title: "Cortado",     description: "Like yin and yang, a cortado is the perfect balance of espresso and warm steamed milk. The milk is used to cut back on the espresso’s acidity.",
     img_url: "http://www.birdhousecoffee.com/wp-content/uploads/2020/04/cortado.jpg" )
 Beverage.create(title: "Red Eye",     description: "Named after those pesky midnight flights, a red eye can cure any tiresome morning. A full cup of hot coffee with an espresso shot mixed in, this will definitely get your heart racing.", img_url: "http://thebrilliantkitchen.com/wp-content/uploads/2020/10/red_eye_coffee_in_cup-1.jpg" )
