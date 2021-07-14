@@ -20,6 +20,11 @@ class ApplicationController < Sinatra::Base
       beverages = Beverage.all
       beverages.to_json(include: [:ingredients, :reviews])
     end
+
+    # get "/beverage/:id" do 
+    #   beverage = Beverage.find(params[:id])
+    #   beverage.to_json(include: [:ingredients, :reviews])
+    # end
   
     get "/users" do 
       users = User.all
@@ -27,7 +32,7 @@ class ApplicationController < Sinatra::Base
     end
 
     get "/thumbnail_data" do
-        beverages = Beverage.select(:title, :beverage_id, :img_url)
+        beverages = Beverage.select(:title, :id, :img_url)
         beverages.to_json
       end
 
@@ -39,6 +44,14 @@ class ApplicationController < Sinatra::Base
     get "/ingredients" do 
       ingredients = Ingredient.all
       ingredients.to_json
+    end
+
+    post "/reviews" do
+      review_params = params.select do |key|
+        ["title", "content", "rating", "user_id", "beverage_id"].include?(key)
+      end
+      review = Review.create(review_params)
+      review.to_json
     end
 
     # post "/new_painting" do 
