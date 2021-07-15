@@ -54,6 +54,20 @@ class ApplicationController < Sinatra::Base
       review.to_json
     end
 
+    post "/beverages_post" do
+      bev_params = params.select do |key|
+        ["title", "description", "img_url", "hot"].include?(key)
+      end
+      beverage = Beverage.create(bev_params)
+
+      ing_params = params["ingredients"]
+          ing_params.each do |c| 
+     
+        Component.create(beverage_id: Beverage.last.id, ingredient_id: Ingredient.all.find_by(name: c).id)
+      end
+        beverage.to_json(include: :ingredients)
+    end
+
     # post "/new_painting" do 
     #   puts params.inspect
     #   painting_params = params.select do |key|
