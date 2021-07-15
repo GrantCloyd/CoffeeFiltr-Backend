@@ -85,6 +85,13 @@ class ApplicationController < Sinatra::Base
         beverage.to_json(include: :ingredients)
     end
 
+    patch "/users/:id" do  
+      user = User.find(params[:id])
+      attrs_to_update = params.select{|k,v| ["username", "first_name", "last_name", "email", "password", "bio", "avatar"].include?(k)}
+    user.update(attrs_to_update)
+    user.to_json
+  end
+
     # post "/new_painting" do 
     #   puts params.inspect
     #   painting_params = params.select do |key|
