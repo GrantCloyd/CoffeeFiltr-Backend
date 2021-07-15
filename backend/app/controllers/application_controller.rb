@@ -26,9 +26,26 @@ class ApplicationController < Sinatra::Base
     #   beverage.to_json(include: [:ingredients, :reviews])
     # end
   
-    get "/users" do 
+    get "/signin/:username/:password" do 
+      user_params = params.select do |key|
+        ["username", "password"].include?(key)
+      end
       users = User.all
-      users.to_json
+      user = users.find_by(username: user_params["username"])
+      
+      if user.password == user_params["password"] 
+        user.to_json
+      else 
+        "Invalid credentials".to_json
+      end
+    end
+
+    post "/users" do
+      user_params = params.select do |key|
+        ["first_name", "last_name", "email", "username", "bio", "avatar", "password"].include?(key)
+      end
+      user = User.create(user_params)
+      user.to_json
     end
 
     get "/thumbnail_data" do
