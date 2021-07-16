@@ -53,11 +53,11 @@ class ApplicationController < Sinatra::Base
       if liked != nil 
         liked.destroy
         liked_bev = Review.find(like_params["review_id"]).beverage
-        liked_bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes]}])
+        liked_bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes, :user]}])
       else
         like = Like.create(like_params)
         bev = like.review.beverage
-        bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes]}])
+        bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes, :user]}])
       end
     end
 
@@ -72,11 +72,11 @@ class ApplicationController < Sinatra::Base
       if faved != nil 
         faved.destroy
         faved_bev = Beverage.find(fav_params["beverage_id"])
-        faved_bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes]}])
+        faved_bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes, :user]}])
       else
         fave = Favorite.create(fav_params)
         bev = fave.beverage
-        bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes]}])
+        bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes, :user]}])
       end
     end
 
@@ -99,7 +99,7 @@ class ApplicationController < Sinatra::Base
       review = Review.find(params[:id])
       bev = review.beverage
       review.destroy
-      bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes]}])
+      bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes, :user]}])
     end
 
     post "/reviews" do
