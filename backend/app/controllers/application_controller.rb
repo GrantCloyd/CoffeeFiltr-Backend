@@ -18,13 +18,8 @@ class ApplicationController < Sinatra::Base
 
     get "/beverages" do 
       beverages = Beverage.all
-      beverages.to_json(include: [:ingredients, :reviews])
+      beverages.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes, :user]}])
     end
-
-    # get "/beverage/:id" do 
-    #   beverage = Beverage.find(params[:id])
-    #   beverage.to_json(include: [:ingredients, :reviews])
-    # end
   
     get "/signin/:username/:password" do 
       user_params = params.select do |key|
@@ -48,6 +43,43 @@ class ApplicationController < Sinatra::Base
       user.to_json
     end
 
+    post "/likes" do
+      like_params = params.select do |key|
+        ["review_id", "user_id"].include?(key)
+      end
+      
+      liked = Like.find_by user_id: like_params["user_id"], review_id: like_params["review_id"]    
+
+      if liked != nil 
+        liked.destroy
+        liked_bev = Review.find(like_params["review_id"]).beverage
+        liked_bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes]}])
+      else
+        like = Like.create(like_params)
+        bev = like.review.beverage
+        bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes]}])
+      end
+    end
+
+    post "/favorites" do
+      fav_params = params.select do |key|
+        ["beverage_id", "user_id"].include?(key)
+      end
+      
+      faved = Favorite.find_by user_id: fav_params["user_id"], beverage_id: fav_params["beverage_id"]    
+
+      
+      if faved != nil 
+        faved.destroy
+        faved_bev = Beverage.find(fav_params["beverage_id"])
+        faved_bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes]}])
+      else
+        fave = Favorite.create(fav_params)
+        bev = fave.beverage
+        bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes]}])
+      end
+    end
+
     get "/thumbnail_data" do
         beverages = Beverage.select(:title, :id, :img_url)
         beverages.to_json
@@ -61,6 +93,13 @@ class ApplicationController < Sinatra::Base
     get "/ingredients" do 
       ingredients = Ingredient.all
       ingredients.to_json
+    end
+
+    delete "/reviews/:id" do 
+      review = Review.find(params[:id])
+      bev = review.beverage
+      review.destroy
+      bev.to_json(include: [:favorites, :ingredients, reviews: {include: [:likes]}])
     end
 
     post "/reviews" do
