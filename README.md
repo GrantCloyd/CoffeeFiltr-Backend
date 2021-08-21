@@ -2,7 +2,7 @@
 
 ![CoffeeFiltr](https://i.imgur.com/d2hK8tgb.png)
 
-# CoffeeFiltr--Front-End
+# CoffeeFiltr-Back-End
 
 
 </div>
@@ -13,6 +13,7 @@ A fun way to explore and find new coffee beverages. Discover, favorite, sort and
 
 [Front End Repo Here](https://github.com/GrantCloyd/CoffeeFiltr--Front-End/blob/main/README.md)
 
+## Setup
 
 Clone down this repository. A basic Rack app is located in the backend folder.
 
@@ -23,6 +24,6 @@ Start your server with:
 shotgun --port=9292
 Note: This will run your server on port http://localhost:9292. shotgun is a ruby gem that will automatically reload your Rack server. You may still need to refresh your browser to see changes.
 
-##Acknowledgements 
+## Acknowledgements 
 
 This was built using Rack, Sinatra and SQLite. The logo was created with Canva's online tools. 
