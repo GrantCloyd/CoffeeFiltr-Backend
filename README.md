@@ -21,7 +21,8 @@ First, cd into the backend folder and run bundle install in your backend folder 
 
 Start your server with:
 
-shotgun --port=9292
+```shotgun --port=9292```
+
 Note: This will run your server on port http://localhost:9292. shotgun is a ruby gem that will automatically reload your Rack server. You may still need to refresh your browser to see changes.
 
 ## Acknowledgements 
